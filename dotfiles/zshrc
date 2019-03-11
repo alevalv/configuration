@@ -10,7 +10,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
 
-antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+#antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+antigen theme https://github.com/romkatv/powerlevel10k powerlevel10k
 
 antigen apply
 
@@ -28,4 +29,10 @@ export VISUAL=vim
 export EDITOR=vim
 
 PATH="$HOME/.node_modules/bin:$PATH"
+
+CAFETO_VAULT=~/Vaults/CafetoSoftware
+PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/sh-bootstrap.sh
+if [ -f $PROS_BOOTSTRAP ]; then
+    source $PROS_BOOTSTRAP
+fi
 
