@@ -1,0 +1,45 @@
+{
+    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "Overpass Mono",
+    "breadcrumbs.enabled": true,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ]
+        }
+    ],
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "underline-thin",
+    "materialTheme.showReloadNotification": false,
+    "editor.wordWrap": "on",
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "native",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.startupEditor": "none",
+    "editor.cursorSmoothCaretAnimation": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.fontLigatures": true,
+    "vscode_custom_css.imports": ["file:///home/alevalv/Code/repos/configuration/dotfiles/code/style.css"],
+    "vscode_custom_css.policy": true,
+}
