@@ -12,6 +12,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 
 #antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 antigen theme https://github.com/romkatv/powerlevel10k powerlevel10k
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 antigen apply
 
