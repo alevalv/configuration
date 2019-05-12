@@ -36,4 +36,3 @@ PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/sh-bootstrap.sh
 if [ -f $PROS_BOOTSTRAP ]; then
     source $PROS_BOOTSTRAP
 fi
-

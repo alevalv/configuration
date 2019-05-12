@@ -1,7 +1,8 @@
 {
     "workbench.colorTheme": "Material Theme Darker",
     "workbench.iconTheme": "material-icon-theme",
-    "editor.fontFamily": "Overpass Mono",
+    "editor.fontFamily": "Iosevka",
+    "editor.fontSize": 15,
     "breadcrumbs.enabled": true,
     "latex-workshop.latex.recipes": [
         {
@@ -28,7 +29,6 @@
     ],
     "editor.cursorBlinking": "phase",
     "editor.cursorStyle": "underline-thin",
-    "materialTheme.showReloadNotification": false,
     "editor.wordWrap": "on",
     "window.menuBarVisibility": "toggle",
     "window.titleBarStyle": "native",
@@ -40,6 +40,14 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "editor.fontLigatures": true,
-    "vscode_custom_css.imports": ["file:///home/alevalv/Code/repos/configuration/dotfiles/code/style.css"],
-    "vscode_custom_css.policy": true,
+    "telemetry.enableTelemetry": false,
+    "files.autoSave": "onFocusChange",
+    "editor.minimap.enabled": false,
+    "oz.enableLinter": true,
+    "oz.showCompilerOutput": true,
+    "editor.tabSize": 10,
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrapColumn": 100,
+    "editor.mouseWheelZoom": true,
+    "editor.smoothScrolling": true,
 }
