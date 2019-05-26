@@ -1,0 +1,8 @@
+[user]
+	name = Alejandro Valdes
+	email = alejandrovaldes@live.com
+	signingkey = D6BCE39304CF4A3C
+[push]
+	default = current
+[commit]
+	gpgsign = true
