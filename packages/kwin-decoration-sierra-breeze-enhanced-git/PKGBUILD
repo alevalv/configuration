@@ -16,13 +16,11 @@ sha256sums=('SKIP')
 pkgver() {
    cd ${srcdir}/${_gitname}
    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  
 }
 
 build() {
-  
    cd ${srcdir}/${_gitname}
-  
+
    mkdir build && cd build
    cmake ..  \
             -DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,6 +32,5 @@ build() {
 }
 
 package() {   
-   make -C ${srcdir}/${_gitname}/build DESTDIR="$pkgdir" install        
+   make -C ${srcdir}/${_gitname}/build DESTDIR="$pkgdir" install
 }
-

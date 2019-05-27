@@ -1,0 +1,31 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
+
+pkgname=interative-cli
+_gitname=cli
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="A library for interactive command line interfaces in modern C++"
+arch=('x86_64')
+url="https://github.com/daniele77/cli"
+license=('custom')
+depends=('boost')
+makedepends=('cmake')
+source=("${url}/archive/v${pkgver}.zip")
+sha256sums=('5a5240572340acbfd8496f453fd753db99fad4d9a79ff0564ca6c1e8e2ef37b6')
+
+prepare() {
+    mkdir -p build
+}
+
+build() {
+    cd build
+    cmake ../$_gitname-$pkgver \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    make
+}
+
+package() {
+    cd build
+    make DESTDIR="$pkgdir" install
+}
