@@ -5,12 +5,12 @@ antigen bundle robbyrussell/oh-my-zsh /lib
 antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
+antigen bundle micha/resty
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
 
-#antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 antigen theme https://github.com/romkatv/powerlevel10k powerlevel10k
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 

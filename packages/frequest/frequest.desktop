@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=FRequest
+GenericName=FRequest
+Comment=A fast, lightweight and opensource desktop application to make HTTP(s) requests
+Icon=frequest
+Exec=frequest
+StartupNotify=true
+Terminal=False
+Categories=Application;Network;Development;

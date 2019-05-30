@@ -1,0 +1,40 @@
+# Maintainer: habarnam <habarnam@littr.me>
+pkgname=frequest-git
+pkgver=v1.1c.r4.326682e
+pkgrel=1
+pkgdesc="A fast, lightweight and open-source desktop application to execute HTTP(s) requests"
+arch=('x86_64')
+url="https://fabiobento512.github.io/FRequest/"
+license=('GPL')
+depends=('qt5-base>=5.10.0')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=326682e361b799aea781baff09e28247b853035e"
+        'git+https://github.com/fabiobento512/CommonUtils.git'
+        'git+https://github.com/fabiobento512/CommonLibs.git'
+         "${pkgname%-git}.desktop")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'a3a042bedc7fc1a3947f011b19f62c44')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+	qmake
+	make
+}
+
+package() {
+	cd "$pkgdir"
+    mkdir -p usr/bin
+    cp "$srcdir/${pkgname%-git}/FRequest" usr/bin/${pkgname%-git}
+    mkdir -p usr/share/{applications,icons}
+    cp "$srcdir/${pkgname%-git}/LinuxAppImageDeployment/frequest_icon.png" "usr/share/icons/${pkgname%-git}.png"
+    cp "$srcdir/frequest.desktop" "usr/share/applications/${pkgname%-git}.desktop"
+}
