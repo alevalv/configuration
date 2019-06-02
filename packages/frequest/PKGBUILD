@@ -9,7 +9,7 @@ depends=('qt5-base>=5.10.0')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=6de42dc7b96b74f062e2c84312c1b8e2807a02d5"
+source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=e92b040186b525926a190b7e61b348d8fe8a995a"
         'git+https://github.com/fabiobento512/CommonUtils.git'
         'git+https://github.com/fabiobento512/CommonLibs.git'
          "${pkgname%-git}.desktop")
