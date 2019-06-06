@@ -50,4 +50,5 @@
     "editor.wordWrapColumn": 100,
     "editor.mouseWheelZoom": true,
     "editor.smoothScrolling": true,
+    "diffEditor.ignoreTrimWhitespace": false,
 }

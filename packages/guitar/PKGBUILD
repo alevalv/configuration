@@ -1,0 +1,41 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
+
+pkgname=guitar
+_gitname=Guitar
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Git GUI Client"
+arch=('x86_64')
+url="https://github.com/soramimi/Guitar"
+license=('GPLv2')
+depends=('git' 'file' 'zlib' 'openssh' 'openssl')
+optdepends=('gpg')
+makedepends=('cmake' 'make')
+source=("${url}/archive/v${pkgver}.zip"
+        "${pkgname}.desktop"
+        "zlib.patch")
+sha256sums=('af1925f77bd7d006cffdd73b0247807d0cace962140b5ba7aa54b36da13234d0'
+            'b25dd8a8a2b86f3d4501bf08320c75f6067ac63967969ea39aa9143718707ee6'
+            'fe61f4003461995615ba62cc7b70f3c32872aba5b84129e35e590014f52db87e')
+
+prepare() {
+    mkdir -p build
+    cd $srcdir/$_gitname-$pkgver
+    ruby prepare.rb
+    patch --forward --strip=1 --input="${srcdir}/zlib.patch"
+}
+
+build() {
+  cd build
+    qmake $srcdir/$_gitname-$pkgver/Guitar.pro "CONFIG+=release"
+    make
+}
+
+package() {
+    cd "$pkgdir"
+    mkdir -p usr/bin
+    cp "$srcdir/$_gitname-$pkgver/_bin/Guitar" usr/bin/${pkgname}
+    mkdir -p usr/share/{applications,pixmaps}
+    cp "$srcdir/$_gitname-$pkgver/LinuxDesktop/Guitar.svg" "usr/share/pixmaps/${pkgname}.svg"
+    cp "$srcdir/guitar.desktop" "usr/share/applications/${pkgname}.desktop"
+}
