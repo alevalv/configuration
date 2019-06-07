@@ -10,7 +10,7 @@ url="https://github.com/soramimi/Guitar"
 license=('GPLv2')
 depends=('git' 'file' 'zlib' 'openssh' 'openssl' 'qt5-base' 'qt5-svg')
 optdepends=('gpg')
-makedepends=('cmake' 'make')
+makedepends=('cmake' 'make' 'ruby')
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.desktop"
         "zlib.patch")
