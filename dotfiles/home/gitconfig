@@ -6,3 +6,5 @@
 	default = current
 [commit]
 	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg
