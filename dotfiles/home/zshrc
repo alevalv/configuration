@@ -28,8 +28,10 @@ alias cd..='cd ..'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export VISUAL=vim
 export EDITOR=vim
+export GEM_HOME=$HOME/.gem
 
 PATH="$HOME/.node_modules/bin:$PATH"
+PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 
 CAFETO_VAULT=~/Vaults/CafetoSoftware
 PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/sh-bootstrap.sh

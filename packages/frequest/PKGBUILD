@@ -1,6 +1,6 @@
 pkgname=frequest
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, lightweight and open-source desktop application to execute HTTP(s) requests"
 arch=('x86_64')
 url="https://fabiobento512.github.io/FRequest/"
@@ -9,8 +9,8 @@ depends=('qt5-base>=5.10.0')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=e92b040186b525926a190b7e61b348d8fe8a995a"
-        'git+https://github.com/fabiobento512/CommonUtils.git'
+source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=2325f482e032bf0c745f3a4aecf90a93491548dc"
+        'git+https://github.com/alevalv/CommonUtils.git#commit=eab9f1bdaa2f57b138a3a77a730a1d8daf60d173'
         'git+https://github.com/fabiobento512/CommonLibs.git'
          "${pkgname%-git}.desktop")
 md5sums=('SKIP'

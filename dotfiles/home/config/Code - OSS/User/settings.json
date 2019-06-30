@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Material Theme Lighter",
+    "workbench.colorTheme": "Material Theme Darker",
     "workbench.iconTheme": "material-icon-theme",
     "editor.fontFamily": "Iosevka",
     "editor.fontSize": 15,
@@ -51,4 +51,6 @@
     "editor.mouseWheelZoom": true,
     "editor.smoothScrolling": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
