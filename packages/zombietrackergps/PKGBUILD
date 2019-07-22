@@ -1,0 +1,36 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
+
+pkgname=zombietrackergps
+pkgver=0.80
+pkgrel=1
+pkgdesc="GPS track manager for Qt using KDE Marble maps. Currently supports GPX and TCX format import."
+arch=('x86_64')
+url="https://gitlab.com/ldutils-projects/zombietrackergps"
+license=('GPLv2')
+depends=('qt5-base' 'marble-qt' 'qt5-charts' 'qt5-svg' 'ldutils')
+makedepends=('git')
+source=("git+${url}.git#commit=c85d6a3c4ed775e88b3369f9528b585a0cfcda4b"
+        "archlinux.patch")
+sha256sums=('SKIP'
+            '4235fa10c9f94fa12ebb430464e7ac002a1550ea0b87f212f23a40fa7c6b9b99')
+
+prepare() {
+  cd $srcdir/$pkgname
+  patch --forward --strip=1 --input="${srcdir}/archlinux.patch"
+  mkdir -p $srcdir/build
+  cd $srcdir/build
+  qmake -o Makefile $srcdir/$pkgname/ZombieTrackerGPS.pro -spec linux-g++
+}
+
+build() {
+  cd build
+  make
+}
+
+package() {
+  cd build
+  mkdir -p ${pkgdir}/usr/share/applications
+  INSTALL_ROOT="${pkgdir}" make install
+  sed -i "s:Icon=.*:Icon=/usr/share/zombietrackergps/zombietrackergps.png:" ${pkgdir}/usr/share/applications/zombietrackergps.desktop
+  rm -r ${pkgdir}/home
+}
