@@ -15,6 +15,7 @@ package_gradle-zsh-completion() {
 	depends=('zsh')
 	cd gradle-completion-${pkgver}
 
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 _gradle \
 		"$pkgdir/usr/share/zsh/site-functions/_gradle"
 }
@@ -23,6 +24,7 @@ package_gradle-bash-completion() {
 	depends=('bash')
 	cd gradle-completion-${pkgver}
 
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 gradle-completion.bash \
 		"$pkgdir/usr/share/bash-completion/completions/gradle"
 }
