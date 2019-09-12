@@ -1,0 +1,28 @@
+# Maintainer: maelstor <maelstor at posteo dot de>
+pkgbase=gradle-bash-completion
+pkgname=(gradle-zsh-completion gradle-bash-completion)
+pkgdesc="Gradle tab completion"
+pkgver=1.4.1
+pkgrel=1
+arch=("any")
+url="https://github.com/gradle/gradle-completion"
+license=("MIT")
+depends=('gradle')
+source=("https://github.com/gradle/gradle-completion/archive/v${pkgver}.zip")
+sha256sums=('af50173b84961005a4174153d95afa78a5512530f5f4ce3aa49168a5ceaeb497')
+
+package_gradle-zsh-completion() {
+	depends=('zsh')
+	cd gradle-completion-${pkgver}
+
+	install -Dm644 _gradle \
+		"$pkgdir/usr/share/zsh/site-functions/_gradle"
+}
+
+package_gradle-bash-completion() {
+	depends=('bash')
+	cd gradle-completion-${pkgver}
+
+	install -Dm644 gradle-completion.bash \
+		"$pkgdir/usr/share/bash-completion/completions/gradle"
+}
