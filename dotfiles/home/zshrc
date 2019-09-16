@@ -16,11 +16,14 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 antigen apply
 
-#HISTFILE=~/.zsh_history
-#SAVEHIST=1000
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+#fzf config
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias ls='ls --color=auto'
 alias cd..='cd ..'
