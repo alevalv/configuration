@@ -37,7 +37,7 @@ PATH="$HOME/.node_modules/bin:$PATH"
 PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 
 CAFETO_VAULT=~/Vaults/CafetoSoftware
-PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/sh-bootstrap.sh
+PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/.prosrc
 if [ -f $PROS_BOOTSTRAP ]; then
     source $PROS_BOOTSTRAP
 fi
