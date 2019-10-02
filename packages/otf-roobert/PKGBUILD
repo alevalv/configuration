@@ -1,0 +1,17 @@
+pkgname=otf-roobert
+pkgver=1
+pkgrel=1
+pkgdesc="Roobert font"
+arch=('any')
+license=('propietary')
+depends=('fontconfig' 'xorg-font-utils')
+source=("local://roobert.zip")
+md5sums=('679a3aa960a1fb53b9ff3dd89dba4107')
+
+package() {
+  cd "${srcdir}/Roobert"
+
+  install -d "${pkgdir}/usr/share/fonts/OTF"
+
+  install -m644 *.otf "${pkgdir}/usr/share/fonts/OTF/"
+}

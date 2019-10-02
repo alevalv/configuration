@@ -2,7 +2,7 @@
 
 pkgname=guitar
 _gitname=Guitar
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Git GUI Client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'make' 'ruby')
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.desktop"
         "zlib.patch")
-sha256sums=('af1925f77bd7d006cffdd73b0247807d0cace962140b5ba7aa54b36da13234d0'
+sha256sums=('2ccd06e15866469d5e62001e15ab399e7a3acfcbd0c3d5f211ccb445ea7e8cca'
             'b25dd8a8a2b86f3d4501bf08320c75f6067ac63967969ea39aa9143718707ee6'
             'fe61f4003461995615ba62cc7b70f3c32872aba5b84129e35e590014f52db87e')
 
