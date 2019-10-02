@@ -53,4 +53,5 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.trimTrailingWhitespace": true,
 }
