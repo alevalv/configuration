@@ -1,6 +1,7 @@
+_pkgname=FRequest
 pkgname=frequest
 pkgver=1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast, lightweight and open-source desktop application to execute HTTP(s) requests"
 arch=('x86_64')
 url="https://fabiobento512.github.io/FRequest/"
@@ -9,14 +10,14 @@ depends=('qt5-base>=5.10.0')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname%-git}::git+https://github.com/alevalv/FRequest.git#commit=2325f482e032bf0c745f3a4aecf90a93491548dc"
-        'git+https://github.com/alevalv/CommonUtils.git#commit=eab9f1bdaa2f57b138a3a77a730a1d8daf60d173'
+source=("https://github.com/fabiobento512/FRequest/archive/master.zip"
+        'git+https://github.com/fabiobento512/CommonUtils.git'
         'git+https://github.com/fabiobento512/CommonLibs.git'
-         "${pkgname%-git}.desktop")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'a3a042bedc7fc1a3947f011b19f62c44')
+         "${pkgname}.desktop")
+sha256sums=('ac35cb170006ff927c5048ac49eca505921974c084cdf9330d8760f731db29e9'
+            'SKIP'
+            'SKIP'
+            'c6b2ed4ca9fccccaa6f4a30c97a7459324a41d0f2db77f7bfaaf0ec92b8c2477')
 
 #pkgver() {
 #	cd "$srcdir/${pkgname%-git}"
@@ -24,7 +25,7 @@ md5sums=('SKIP'
 #}
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}-master"
 	qmake
 	make
 }
@@ -32,8 +33,8 @@ build() {
 package() {
 	cd "$pkgdir"
     mkdir -p usr/bin
-    cp "$srcdir/${pkgname%-git}/FRequest" usr/bin/${pkgname%-git}
+    cp "$srcdir/${_pkgname}-master/FRequest" usr/bin/${pkgname}
     mkdir -p usr/share/{applications,icons}
-    cp "$srcdir/${pkgname%-git}/LinuxAppImageDeployment/frequest_icon.png" "usr/share/icons/${pkgname%-git}.png"
-    cp "$srcdir/frequest.desktop" "usr/share/applications/${pkgname%-git}.desktop"
+    cp "$srcdir/${_pkgname}-master/LinuxAppImageDeployment/frequest_icon.png" "usr/share/icons/${pkgname}.png"
+    cp "$srcdir/frequest.desktop" "usr/share/applications/${pkgname}.desktop"
 }

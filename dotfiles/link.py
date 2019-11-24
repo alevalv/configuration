@@ -11,7 +11,7 @@ ignore_files = ['onedrive']
 
 def ignore(path: str):
     for ignore in ignore_files:
-        if path.find(ignore) is not -1:
+        if path.find(ignore) != -1:
             return True
     return False
 

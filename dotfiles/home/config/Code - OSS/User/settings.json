@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.colorTheme": "SynthWave '84",
     "workbench.iconTheme": "material-icon-theme",
     "editor.fontFamily": "Iosevka",
     "editor.fontSize": 15,
@@ -45,7 +45,6 @@
     "editor.minimap.enabled": false,
     "oz.enableLinter": true,
     "oz.showCompilerOutput": true,
-    "editor.tabSize": 10,
     "editor.renderWhitespace": "boundary",
     "editor.wordWrapColumn": 100,
     "editor.mouseWheelZoom": true,
