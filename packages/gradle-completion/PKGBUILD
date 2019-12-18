@@ -1,19 +1,20 @@
-# Maintainer: maelstor <maelstor at posteo dot de>
-pkgbase=gradle-bash-completion
+# Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
+
+pkgbase=gradle-completion
 pkgname=(gradle-zsh-completion gradle-bash-completion)
 pkgdesc="Gradle tab completion"
 pkgver=1.4.1
 pkgrel=1
 arch=("any")
-url="https://github.com/gradle/gradle-completion"
+url="https://github.com/gradle/${pkgbase}"
 license=("MIT")
 depends=('gradle')
-source=("https://github.com/gradle/gradle-completion/archive/v${pkgver}.zip")
+source=("${url}/archive/v${pkgver}.zip")
 sha256sums=('af50173b84961005a4174153d95afa78a5512530f5f4ce3aa49168a5ceaeb497')
 
 package_gradle-zsh-completion() {
 	depends=('zsh')
-	cd gradle-completion-${pkgver}
+	cd ${pkgbase}-${pkgver}
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 _gradle \
@@ -22,7 +23,7 @@ package_gradle-zsh-completion() {
 
 package_gradle-bash-completion() {
 	depends=('bash')
-	cd gradle-completion-${pkgver}
+	cd ${pkgbase}-${pkgver}
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 gradle-completion.bash \

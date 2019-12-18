@@ -1,4 +1,4 @@
-pkgbase = gradle-bash-completion
+pkgbase = gradle-completion
 	pkgdesc = Gradle tab completion
 	pkgver = 1.4.1
 	pkgrel = 1
