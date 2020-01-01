@@ -1,4 +1,12 @@
-source /usr/share/zsh/share/antigen.zsh
+case `uname` in
+    Darwin)
+        source /usr/local/share/antigen/antigen.zsh
+    ;;
+    Linux)
+        source /usr/share/zsh/share/antigen.zsh
+        alias ls='ls --color=auto'
+    ;;
+esac
 
 antigen bundle robbyrussell/oh-my-zsh /lib
 
@@ -24,8 +32,16 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 #fzf config
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+case `uname` in
+    Linux)
+        source /usr/share/fzf/key-bindings.zsh
+        source /usr/share/fzf/completion.zsh
+    ;;
+    Darwin)
+        source /usr/local/opt/fzf/shell/key-bindings.zsh
+        source /usr/local/opt/fzf/shell/completion.zsh
+    ;;
+esac
 export FZF_DEFAULT_COMMAND='fd --type f'
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -36,7 +52,6 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
-alias ls='ls --color=auto'
 alias cd..='cd ..'
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
