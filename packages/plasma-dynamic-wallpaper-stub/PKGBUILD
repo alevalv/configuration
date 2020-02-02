@@ -1,0 +1,22 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
+
+pkgname=plasma-dynamic-wallpaper-stub
+_pkgname="Minimal Forest"
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Stub package to install a systemwide dynamic wallpaper"
+arch=('any')
+license=('GPLv2')
+depends=('plasma5-wallpapers-dynamic')
+makedepends=('dynamic-wallpaper-importer')
+source=("local:///wallpaper.heic")
+sha256sums=('123')
+
+prepare() {
+    dynamic-wallpaper-importer --source mm.heic --id ${pkgname} --label ${_pkgname}
+}
+
+package() {
+    mkdir -p $pkgdir/usr/share/dynamicwallpapers/
+    cp -r $srcdir/$pkgname $pkgdir/usr/share/dynamicwallpapers/
+}
