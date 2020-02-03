@@ -1,0 +1,21 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
+
+pkgname=plasma-dynamic-wallpaper-atacama
+_pkgname="Atacama Mountain"
+pkgver=1
+pkgrel=1
+pkgdesc="Plasma 5 Dynamic Wallpaper (${_pkgname})"
+arch=('any')
+depends=('plasma5-wallpapers-dynamic')
+makedepends=('dynamic-wallpaper-importer')
+source=("local:///Licancabur.heic")
+sha256sums=('c4181565593229b0c887316afc4fa1863943131588e7798d2c0cb0652824ec23')
+
+prepare() {
+    dynamic-wallpaper-importer --source Licancabur.heic --id ${pkgname} --label "${_pkgname}"
+}
+
+package() {
+    mkdir -p $pkgdir/usr/share/dynamicwallpapers/
+    cp -r $srcdir/$pkgname $pkgdir/usr/share/dynamicwallpapers/
+}

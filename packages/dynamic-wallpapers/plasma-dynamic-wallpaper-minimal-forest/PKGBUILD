@@ -1,0 +1,21 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
+
+pkgname=plasma-dynamic-wallpaper-minimal-forest
+_pkgname="Minimal Forest"
+pkgver=1
+pkgrel=1
+pkgdesc="Plasma 5 Dynamic Wallpaper (Minimal Forest)"
+arch=('any')
+depends=('plasma5-wallpapers-dynamic')
+makedepends=('dynamic-wallpaper-importer')
+source=("local:///mm.heic")
+sha256sums=('10955b61a74a516c5850c8657d1e6e9b84f59500c5edb9d400fe4ff6a2183a94')
+
+prepare() {
+    dynamic-wallpaper-importer --source mm.heic --id ${pkgname} --label "${_pkgname}"
+}
+
+package() {
+    mkdir -p $pkgdir/usr/share/dynamicwallpapers/
+    cp -r $srcdir/$pkgname $pkgdir/usr/share/dynamicwallpapers/
+}

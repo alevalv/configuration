@@ -1,0 +1,21 @@
+# Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
+
+pkgname=plasma-dynamic-wallpaper-lakeside
+_pkgname="Lakeside"
+pkgver=1
+pkgrel=1
+pkgdesc="Plasma 5 Dynamic Wallpaper (${_pkgname})"
+arch=('any')
+depends=('plasma5-wallpapers-dynamic')
+makedepends=('dynamic-wallpaper-importer')
+source=("local:///lakeside.heic")
+sha256sums=('60866fd63f1f70392f0866e7cb95addc0239f5aa5620d5c5840c251bb5001982')
+
+prepare() {
+    dynamic-wallpaper-importer --source lakeside.heic --id ${pkgname} --label "${_pkgname}"
+}
+
+package() {
+    mkdir -p $pkgdir/usr/share/dynamicwallpapers/
+    cp -r $srcdir/$pkgname $pkgdir/usr/share/dynamicwallpapers/
+}
