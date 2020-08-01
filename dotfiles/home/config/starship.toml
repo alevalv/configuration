@@ -2,3 +2,5 @@
 disabled = false
 [time]
 disabled = false
+[directory]
+fish_style_pwd_dir_length = 2
