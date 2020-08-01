@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Name=Netflix
+GenericName=Netflix
+Comment=Launch Netflix as a chromium app
+Exec=chromium --app=https://netflix.com
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/home/alevalv/.local/share/netflix/icon.svg
+StartupNotify=true

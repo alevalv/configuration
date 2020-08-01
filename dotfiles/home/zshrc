@@ -54,7 +54,9 @@ setopt HIST_BEEP
 
 alias cd..='cd ..'
 
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+  -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export VISUAL=vim
 export EDITOR=vim
 export GEM_HOME=$HOME/.gem
