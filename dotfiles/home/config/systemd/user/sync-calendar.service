@@ -1,0 +1,15 @@
+[Unit]
+Description=Downloads a file from the internet to a location
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/alevalv/Calendar
+#User=alevalv
+#Group=alevalv
+ExecStart= wget -NS --content-disposition <path-to-file>
+
+[Install]
+WantedBy=default.target

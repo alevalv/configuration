@@ -1,4 +1,4 @@
 sync_dir="~/OneDrive"
-skip_dir="My Games|Backup|Music|Pictures|Universidad|GitProjects|plasma-vault"
+skip_dir="My Games|Backup|Music|Universidad|GitProjects|plasma-vault|Shared"
 skip_file="~*"
 

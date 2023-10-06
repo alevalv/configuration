@@ -12,7 +12,6 @@ antigen bundle robbyrussell/oh-my-zsh /lib
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-history-substring-search
 antigen apply
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
@@ -31,16 +30,17 @@ esac
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias cd..='cd ..'
+alias klogs='f(){ kubectl logs $2 $3 $4 $5 -f $1 -c $(kubectl get $2 $3 "pods/$1" -o=jsonpath="{.spec.containers[0].name}") };f'
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
   -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
   -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export VISUAL=vim
 export EDITOR=vim
-export GEM_HOME=$HOME/.gem
+#export GEM_HOME=$HOME/.gem
 
 PATH="$HOME/.node_modules/bin:$PATH"
-PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+#PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 
@@ -50,13 +50,36 @@ if [[ $(hostname) == 'avprdtr' ]]; then
   export VDPAU_DRIVER='nvidia';
 fi
 
-### work stuff
-
-CAFETO_VAULT=~/Vaults/CafetoSoftware
-PROS_BOOTSTRAP=$CAFETO_VAULT/PROS/.prosrc
-if [ -f $PROS_BOOTSTRAP ]; then
-    source $PROS_BOOTSTRAP
+# use firefox wayland session if available
+if [[ "$XDG_SESSION_TYPE"  == "wayland" ]]; then
+  export MOZ_ENABLE_WAYLAND=1
 fi
 
+# starship
 eval "$(starship init zsh)"
 
+### work stuff
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# export the aws variables for a given profile
+aws_env() {
+  PROFILE="${1:-default}"
+  echo "setup AWS $PROFILE"
+  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile "$PROFILE");
+  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile "$PROFILE");
+  export AWS_SESSION_TOKEN=$(aws configure get aws_session_token --profile "$PROFILE");
+  export AWS_SECURITY_TOKEN=$(aws configure get aws_security_token --profile "$PROFILE");
+  export AWS_DEFAULT_REGION=$(aws configure get region --profile "$PROFILE");
+  echo "$PROFILE environment variables exported";
+}
+
+# adds autocomplete to aws cli
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/bin/aws_completer' aws
+
+# switch your current AWS profile using fzf
+alias aps='export AWS_PROFILE=$(sed -n "s/\[profile \(.*\)\]/\1/gp" ~/.aws/config | sort | fzf --header="Select an AWS profile" --height=10)'
