@@ -10,9 +10,9 @@
 	gpgsign = true
 [pull]
   rebase = false
-[includeIf "gitdir:~/repos/work/"]
-  path = ~/repos/work/.gitconfig
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	allowedSignersFile = ~/.config/git/allowed_signers
+  allowedSignersFile = ~/.config/git/allowed_signers
+[includeIf "gitdir:~/repos/work/"]
+  path = ~/repos/work/.gitconfig
