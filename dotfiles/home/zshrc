@@ -1,6 +1,7 @@
+# load antigen
 case `uname` in
     Darwin)
-        source /usr/local/share/antigen/antigen.zsh
+        source /opt/homebrew/share/antigen/antigen.zsh
     ;;
     Linux)
         source /usr/share/zsh/share/antigen.zsh
@@ -23,18 +24,18 @@ case `uname` in
         source /usr/share/fzf/completion.zsh
     ;;
     Darwin)
-        source /usr/local/opt/fzf/shell/key-bindings.zsh
-        source /usr/local/opt/fzf/shell/completion.zsh
+        source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+        source /opt/homebrew/opt/fzf/shell/completion.zsh
     ;;
 esac
-export FZF_DEFAULT_COMMAND='fd --type f'
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias cd..='cd ..'
 alias klogs='f(){ kubectl logs $2 $3 $4 $5 -f $1 -c $(kubectl get $2 $3 "pods/$1" -o=jsonpath="{.spec.containers[0].name}") };f'
 
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
-  -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
-  -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export VISUAL=vim
 export EDITOR=vim
 #export GEM_HOME=$HOME/.gem
@@ -44,25 +45,14 @@ PATH="$HOME/.node_modules/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 
-### predator specific configuration
-
-if [[ $(hostname) == 'avprdtr' ]]; then
-  export VDPAU_DRIVER='nvidia';
-fi
-
 # use firefox wayland session if available
 if [[ "$XDG_SESSION_TYPE"  == "wayland" ]]; then
   export MOZ_ENABLE_WAYLAND=1
 fi
 
-# starship
-eval "$(starship init zsh)"
-
 ### work stuff
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export LIBVIRT_DEFAULT_URI="qemu:///system"
+source ~/repos/work/.zshrc
 
 # export the aws variables for a given profile
 aws_env() {
@@ -76,10 +66,31 @@ aws_env() {
   echo "$PROFILE environment variables exported";
 }
 
+#brew stuff
+export PATH="/opt/homebrew/bin:$PATH"
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh-completions:$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+  export HOMEBREW_PREFIX="$(brew --prefix)"
+fi
+
+case `uname` in
+    Darwin)
+        export GPG_TTY=$(tty)
+    ;;
+esac
+
 # adds autocomplete to aws cli
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
-complete -C '/usr/bin/aws_completer' aws
+complete -C '/opt/homebrew/bin/aws_completer' aws
 
 # switch your current AWS profile using fzf
 alias aps='export AWS_PROFILE=$(sed -n "s/\[profile \(.*\)\]/\1/gp" ~/.aws/config | sort | fzf --header="Select an AWS profile" --height=10)'
+
+# starship
+eval "$(starship init zsh)"

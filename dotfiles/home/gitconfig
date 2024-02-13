@@ -1,12 +1,18 @@
 [user]
 	name = Alejandro Valdes
 	email = alejandrovaldes@live.com
-	signingkey = D6BCE39304CF4A3C
+	signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1LhAZ2h6Y+MGWHc6p4uFwNb7uTVq4wl3xb5IC7BWyk id_ed25519"
 [push]
 	default = current
 [commit]
 	gpgsign = true
-[gpg]
-	program = /usr/bin/gpg
+[tag]
+	gpgsign = true
 [pull]
-	rebase = false
+  rebase = false
+[includeIf "gitdir:~/repos/work/"]
+  path = ~/repos/work/.gitconfig
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
