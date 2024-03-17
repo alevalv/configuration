@@ -51,8 +51,9 @@ if [[ "$XDG_SESSION_TYPE"  == "wayland" ]]; then
 fi
 
 ### work stuff
-
-source ~/repos/work/.zshrc
+if [ -f ~/repos/work/.zshrc ]; then
+  source ~/repos/work/.zshrc
+fi
 
 # export the aws variables for a given profile
 aws_env() {
